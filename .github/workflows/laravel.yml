@@ -2,9 +2,9 @@ name: Laravel CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   laravel-tests:
@@ -49,7 +49,7 @@ jobs:
   deploy:
     needs: [laravel-tests, build-frontend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
       - name: Deploy Message
         run: echo "Aplikasi berhasil melewati tes dan siap di-deploy secara otomatis oleh platform hosting (Railway/Koyeb)."
